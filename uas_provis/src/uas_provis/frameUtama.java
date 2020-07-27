@@ -46,11 +46,11 @@ public class frameUtama extends javax.swing.JFrame {
         panelutama.setLayout(panelutamaLayout);
         panelutamaLayout.setHorizontalGroup(
             panelutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 615, Short.MAX_VALUE)
         );
         panelutamaLayout.setVerticalGroup(
             panelutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 399, Short.MAX_VALUE)
         );
 
         mfile.setText("File");
