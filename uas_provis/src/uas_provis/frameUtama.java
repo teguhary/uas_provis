@@ -5,7 +5,9 @@
  */
 package uas_provis;
 
+import form.formJeniskendaraan;
 import form.formPelanggan;
+import form.formSupir;
 import java.awt.Dimension;
 
 
@@ -33,9 +35,10 @@ public class frameUtama extends javax.swing.JFrame {
     private void initComponents() {
 
         panelutama = new javax.swing.JDesktopPane();
-        jButton1 = new javax.swing.JButton();
+        btnsupir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnpelanggan = new javax.swing.JButton();
+        btnjeniskendaraan = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mfile = new javax.swing.JMenu();
         medit = new javax.swing.JMenu();
@@ -47,7 +50,12 @@ public class frameUtama extends javax.swing.JFrame {
 
         panelutama.setBackground(new java.awt.Color(102, 153, 255));
 
-        jButton1.setText("Data Member");
+        btnsupir.setText("Data Supir");
+        btnsupir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsupirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("RENTAL MOBIL BAGAS666");
@@ -56,6 +64,13 @@ public class frameUtama extends javax.swing.JFrame {
         btnpelanggan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnpelangganActionPerformed(evt);
+            }
+        });
+
+        btnjeniskendaraan.setText("Data Jenis Kendaraan");
+        btnjeniskendaraan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnjeniskendaraanActionPerformed(evt);
             }
         });
 
@@ -71,8 +86,11 @@ public class frameUtama extends javax.swing.JFrame {
                     .addGroup(panelutamaLayout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addGroup(panelutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnpelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnsupir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelutamaLayout.createSequentialGroup()
+                                .addComponent(btnpelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(btnjeniskendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
         panelutamaLayout.setVerticalGroup(
@@ -81,14 +99,17 @@ public class frameUtama extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnpelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnpelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnjeniskendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnsupir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(167, Short.MAX_VALUE))
         );
-        panelutama.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelutama.setLayer(btnsupir, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelutama.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelutama.setLayer(btnpelanggan, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelutama.setLayer(btnjeniskendaraan, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         mfile.setText("File");
         jMenuBar1.add(mfile);
@@ -143,7 +164,7 @@ public class frameUtama extends javax.swing.JFrame {
 
     private void btnpelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpelangganActionPerformed
         // TODO add your handling code here:
-        panelutama.removeAll();
+       panelutama.removeAll();
        panelutama.repaint();
        formPelanggan plg = new formPelanggan();
        
@@ -154,6 +175,34 @@ public class frameUtama extends javax.swing.JFrame {
        panelutama.add(plg);
        plg.setVisible(true);
     }//GEN-LAST:event_btnpelangganActionPerformed
+
+    private void btnsupirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsupirActionPerformed
+        // TODO add your handling code here:
+       panelutama.removeAll();
+       panelutama.repaint();
+       formSupir spr = new formSupir();
+       
+       Dimension lutama = this.getSize();
+       Dimension lspr = spr.getSize();
+       
+       spr.setLocation(lutama.width/2-lspr.width/2,lutama.height/2-lspr.height/2);
+       panelutama.add(spr);
+       spr.setVisible(true);
+    }//GEN-LAST:event_btnsupirActionPerformed
+
+    private void btnjeniskendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnjeniskendaraanActionPerformed
+        // TODO add your handling code here:
+       panelutama.removeAll();
+       panelutama.repaint();
+       formJeniskendaraan jk = new formJeniskendaraan();
+       
+       Dimension lutama = this.getSize();
+       Dimension ljk = jk.getSize();
+       
+       jk.setLocation(lutama.width/2-ljk.width/2,lutama.height/2-ljk.height/2);
+       panelutama.add(jk);
+       jk.setVisible(true);
+    }//GEN-LAST:event_btnjeniskendaraanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,8 +240,9 @@ public class frameUtama extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnjeniskendaraan;
     private javax.swing.JButton btnpelanggan;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnsupir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mabout;

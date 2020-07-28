@@ -15,16 +15,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Arvin Rizky
  */
-public class formPelanggan extends javax.swing.JInternalFrame {
+public class formSupir extends javax.swing.JInternalFrame {
 public Statement st;
 public ResultSet rs;
 public DefaultTableModel tabModel;
 Connection cn = koneksi.koneksi.Koneksi();
-    /**
-     * Creates new form fpelanggan
-     */
     
-    public formPelanggan() {
+    public formSupir() {
         initComponents();
         fieldalamat.setLineWrap(true);
         judul();
@@ -39,18 +36,18 @@ Connection cn = koneksi.koneksi.Koneksi();
         "id", "nama", "alamat"
     };
     tabModel = new DefaultTableModel(null, judul);
-    tabelpelanggan.setModel(tabModel);
+    tabelsupir.setModel(tabModel);
 }
     public void tampilData(String where) {
         try {
             st = cn.createStatement();
             tabModel.getDataVector().removeAllElements();
             tabModel.fireTableDataChanged();
-            rs = st.executeQuery("SELECT * FROM pelanggan");
+            rs = st.executeQuery("SELECT * FROM supir");
     
         while (rs.next()) {
             Object[] data = {
-                rs.getString("id_pelanggan"),
+                rs.getString("id_supir"),
                 rs.getString("nama"),
                 rs.getString("alamat"),
                 };
@@ -79,12 +76,12 @@ Connection cn = koneksi.koneksi.Koneksi();
         btnhapus = new javax.swing.JButton();
         btnreset = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelpelanggan = new javax.swing.JTable();
+        tabelsupir = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         fieldalamat = new javax.swing.JTextArea();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Form Pelanggan");
+        jLabel1.setText("Form Supir");
 
         jLabel2.setText("Nama");
 
@@ -118,7 +115,7 @@ Connection cn = koneksi.koneksi.Koneksi();
             }
         });
 
-        tabelpelanggan.setModel(new javax.swing.table.DefaultTableModel(
+        tabelsupir.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -129,12 +126,12 @@ Connection cn = koneksi.koneksi.Koneksi();
                 "Id", "Nama", "Alamat"
             }
         ));
-        tabelpelanggan.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelsupir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelpelangganMouseClicked(evt);
+                tabelsupirMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tabelpelanggan);
+        jScrollPane1.setViewportView(tabelsupir);
 
         fieldalamat.setColumns(20);
         fieldalamat.setRows(5);
@@ -207,7 +204,7 @@ Connection cn = koneksi.koneksi.Koneksi();
         try
         {
             st = cn.createStatement();
-            st.executeUpdate("INSERT INTO pelanggan (nama,alamat)" +  "values('" + fieldnama.getText()+ "','"
+            st.executeUpdate("INSERT INTO supir (nama,alamat)" +  "values('" + fieldnama.getText()+ "','"
                     + fieldalamat.getText() + "')");
             tampilData("");
             JOptionPane.showMessageDialog(null, "Simpan Berhasil");
@@ -219,16 +216,16 @@ Connection cn = koneksi.koneksi.Koneksi();
         }
     }//GEN-LAST:event_btntambahActionPerformed
 
-    private void tabelpelangganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelpelangganMouseClicked
+    private void tabelsupirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelsupirMouseClicked
         // TODO add your handling code here:
         
-        fieldnama.setText(tabelpelanggan.getValueAt(tabelpelanggan.getSelectedRow(), 1).toString());
-        fieldalamat.setText(tabelpelanggan.getValueAt(tabelpelanggan.getSelectedRow(), 2).toString());
+        fieldnama.setText(tabelsupir.getValueAt(tabelsupir.getSelectedRow(), 1).toString());
+        fieldalamat.setText(tabelsupir.getValueAt(tabelsupir.getSelectedRow(), 2).toString());
         btntambah.setEnabled(false);
         btnubah.setEnabled(true);
         btnhapus.setEnabled(true);
         
-    }//GEN-LAST:event_tabelpelangganMouseClicked
+    }//GEN-LAST:event_tabelsupirMouseClicked
 
     private void btnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresetActionPerformed
         // TODO add your handling code here:
@@ -240,9 +237,9 @@ Connection cn = koneksi.koneksi.Koneksi();
         // TODO add your handling code here:
         try{
         st = cn.createStatement();
-        st.executeUpdate("UPDATE pelanggan set " 
+        st.executeUpdate("UPDATE supir set " 
             + "nama='"       + fieldnama.getText()   + "', "
-            + "alamat='"     + fieldalamat.getText() + "'where id_pelanggan='" + tabModel.getValueAt(tabelpelanggan.getSelectedRow(), 0) +"'");
+            + "alamat='"     + fieldalamat.getText() + "'where id_supir='" + tabModel.getValueAt(tabelsupir.getSelectedRow(), 0) +"'");
             
         tampilData("");
         JOptionPane.showMessageDialog(null, "Update Berhasil");
@@ -261,8 +258,8 @@ Connection cn = koneksi.koneksi.Koneksi();
     
             if ((jawab = JOptionPane.showConfirmDialog(null, "Ingin menghapus data?", "konfirmasi", JOptionPane.YES_NO_OPTION)) == 0) {
                 st = cn.createStatement();
-                st.executeUpdate("DELETE FROM pelanggan WHERE id_pelanggan='"
-                                + tabModel.getValueAt(tabelpelanggan.getSelectedRow(), 0) + "'");
+                st.executeUpdate("DELETE FROM supir WHERE id_supir='"
+                                + tabModel.getValueAt(tabelsupir.getSelectedRow(), 0) + "'");
                 tampilData("");
             fieldnama.setText("");
             fieldalamat.setText("");
@@ -286,6 +283,6 @@ Connection cn = koneksi.koneksi.Koneksi();
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tabelpelanggan;
+    private javax.swing.JTable tabelsupir;
     // End of variables declaration//GEN-END:variables
 }
