@@ -33,6 +33,9 @@ public class frameUtama extends javax.swing.JFrame {
     private void initComponents() {
 
         panelutama = new javax.swing.JDesktopPane();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnpelanggan = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mfile = new javax.swing.JMenu();
         medit = new javax.swing.JMenu();
@@ -42,16 +45,50 @@ public class frameUtama extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        panelutama.setBackground(new java.awt.Color(102, 153, 255));
+
+        jButton1.setText("Data Member");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setText("RENTAL MOBIL BAGAS666");
+
+        btnpelanggan.setText("Data Pelanggan");
+        btnpelanggan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnpelangganActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelutamaLayout = new javax.swing.GroupLayout(panelutama);
         panelutama.setLayout(panelutamaLayout);
         panelutamaLayout.setHorizontalGroup(
             panelutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 615, Short.MAX_VALUE)
+            .addGroup(panelutamaLayout.createSequentialGroup()
+                .addGroup(panelutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelutamaLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelutamaLayout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addGroup(panelutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnpelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         panelutamaLayout.setVerticalGroup(
             panelutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 399, Short.MAX_VALUE)
+            .addGroup(panelutamaLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnpelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(167, Short.MAX_VALUE))
         );
+        panelutama.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelutama.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelutama.setLayer(btnpelanggan, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         mfile.setText("File");
         jMenuBar1.add(mfile);
@@ -104,6 +141,20 @@ public class frameUtama extends javax.swing.JFrame {
        plg.setVisible(true);
     }//GEN-LAST:event_sbpelangganActionPerformed
 
+    private void btnpelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpelangganActionPerformed
+        // TODO add your handling code here:
+        panelutama.removeAll();
+       panelutama.repaint();
+       formPelanggan plg = new formPelanggan();
+       
+       Dimension lutama = this.getSize();
+       Dimension lplg = plg.getSize();
+       
+       plg.setLocation(lutama.width/2-lplg.width/2,lutama.height/2-lplg.height/2);
+       panelutama.add(plg);
+       plg.setVisible(true);
+    }//GEN-LAST:event_btnpelangganActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -140,6 +191,9 @@ public class frameUtama extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnpelanggan;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mabout;
     private javax.swing.JMenu medit;
