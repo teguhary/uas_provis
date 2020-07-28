@@ -20,7 +20,13 @@ public class koneksi {
     public static Connection Koneksi() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection koneksi = DriverManager.getConnection("jdbc:mysql://localhost/db10118375rental", "root", "");
+            
+            String db_connection = "mysql";
+            String db_host = "localhost";
+            String db_name = "db10118375rental";
+            String db_username = "root";
+            String db_password = "";
+            Connection koneksi = DriverManager.getConnection("jdbc:"+ db_connection +"://"+ db_host +"/"+ db_name +"", ""+db_username+"", ""+ db_password +"");
             
             return koneksi;
         } catch(Exception e) {
