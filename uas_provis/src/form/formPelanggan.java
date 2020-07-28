@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Arvin Rizky
  */
-public class fpelanggan extends javax.swing.JInternalFrame {
+public class formPelanggan extends javax.swing.JInternalFrame {
 public Statement st;
 public ResultSet rs;
 public DefaultTableModel tabModel;
@@ -24,10 +24,13 @@ Connection cn = koneksi.koneksi.Koneksi();
      * Creates new form fpelanggan
      */
     
-    public fpelanggan() {
+    public formPelanggan() {
         initComponents();
+        fieldalamat.setLineWrap(true);
         judul();
         tampilData("");
+        btnhapus.setEnabled(false);
+        btnubah.setEnabled(false);
     }
     
 
@@ -73,9 +76,9 @@ Connection cn = koneksi.koneksi.Koneksi();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btntambah = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnubah = new javax.swing.JButton();
+        btnhapus = new javax.swing.JButton();
+        btnreset = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelpelanggan = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -97,11 +100,26 @@ Connection cn = koneksi.koneksi.Koneksi();
             }
         });
 
-        jButton2.setText("Ubah");
+        btnubah.setText("Ubah");
+        btnubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnubahActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Hapus");
+        btnhapus.setText("Hapus");
+        btnhapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhapusActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Reset");
+        btnreset.setText("Reset");
+        btnreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnresetActionPerformed(evt);
+            }
+        });
 
         tabelpelanggan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,6 +132,11 @@ Connection cn = koneksi.koneksi.Koneksi();
                 "Id", "Nama", "Alamat"
             }
         ));
+        tabelpelanggan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelpelangganMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelpelanggan);
 
         fieldalamat.setColumns(20);
@@ -143,11 +166,11 @@ Connection cn = koneksi.koneksi.Koneksi();
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btntambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(btnhapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)))
+                                    .addComponent(btnubah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnreset, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
@@ -162,7 +185,10 @@ Connection cn = koneksi.koneksi.Koneksi();
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fieldnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -178,13 +204,12 @@ Connection cn = koneksi.koneksi.Koneksi();
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btntambah)
-                            .addComponent(jButton2))
+                            .addComponent(btnubah))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(89, Short.MAX_VALUE))
+                            .addComponent(btnhapus)
+                            .addComponent(btnreset))
+                        .addGap(93, 93, 93))))
         );
 
         pack();
@@ -205,19 +230,77 @@ Connection cn = koneksi.koneksi.Koneksi();
             fieldmember.setText("");
         }catch(Exception e)
         {
-            JOptionPane.showMessageDialog(null, "Error Karena"+e);
+            JOptionPane.showMessageDialog(null, "Error Karena "+e);
         }
     }//GEN-LAST:event_btntambahActionPerformed
 
+    private void tabelpelangganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelpelangganMouseClicked
+        // TODO add your handling code here:
+        
+        fieldnama.setText(tabelpelanggan.getValueAt(tabelpelanggan.getSelectedRow(), 1).toString());
+        fieldalamat.setText(tabelpelanggan.getValueAt(tabelpelanggan.getSelectedRow(), 2).toString());
+        fieldmember.setText(tabelpelanggan.getValueAt(tabelpelanggan.getSelectedRow(), 3).toString());
+        btntambah.setEnabled(false);
+        btnubah.setEnabled(true);
+        btnhapus.setEnabled(true);
+        
+    }//GEN-LAST:event_tabelpelangganMouseClicked
+
+    private void btnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresetActionPerformed
+        // TODO add your handling code here:
+        fieldnama.setText("");
+        fieldalamat.setText("");
+        fieldmember.setText("");;
+    }//GEN-LAST:event_btnresetActionPerformed
+
+    private void btnubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnubahActionPerformed
+        // TODO add your handling code here:
+        try{
+        st = cn.createStatement();
+        st.executeUpdate("UPDATE pelanggan set " 
+            + "nama='"       + fieldnama.getText()   + "', "
+            + "alamat='"     + fieldalamat.getText() + "', "
+            + "id_member='"  + fieldmember.getText() + "' where id_pelanggan='" + tabModel.getValueAt(tabelpelanggan.getSelectedRow(), 0) +"'");
+        tampilData("");
+        JOptionPane.showMessageDialog(null, "Update Berhasil");
+        fieldnama.setText("");
+        fieldalamat.setText("");
+        fieldmember.setText("");
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error Karena "+e);
+        }
+    }//GEN-LAST:event_btnubahActionPerformed
+
+    private void btnhapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhapusActionPerformed
+        // TODO add your handling code here:
+        try {
+        int jawab;
+    
+            if ((jawab = JOptionPane.showConfirmDialog(null, "Ingin menghapus data?", "konfirmasi", JOptionPane.YES_NO_OPTION)) == 0) {
+                st = cn.createStatement();
+                st.executeUpdate("DELETE FROM pelanggan WHERE id_pelanggan='"
+                                + tabModel.getValueAt(tabelpelanggan.getSelectedRow(), 0) + "'");
+                tampilData("");
+            fieldnama.setText("");
+            fieldalamat.setText("");
+            fieldmember.setText("");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error Karena "+e);
+        }
+        
+    }//GEN-LAST:event_btnhapusActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnhapus;
+    private javax.swing.JButton btnreset;
     private javax.swing.JButton btntambah;
+    private javax.swing.JButton btnubah;
     private javax.swing.JTextArea fieldalamat;
     private javax.swing.JTextField fieldmember;
     private javax.swing.JTextField fieldnama;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

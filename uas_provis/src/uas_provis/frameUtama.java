@@ -5,7 +5,7 @@
  */
 package uas_provis;
 
-import form.fpelanggan;
+import form.formPelanggan;
 import java.awt.Dimension;
 
 
@@ -94,7 +94,7 @@ public class frameUtama extends javax.swing.JFrame {
         // TODO add your handling code here:
        panelutama.removeAll();
        panelutama.repaint();
-       fpelanggan plg = new fpelanggan();
+       formPelanggan plg = new formPelanggan();
        
        Dimension lutama = this.getSize();
        Dimension lplg = plg.getSize();
