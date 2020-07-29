@@ -240,7 +240,7 @@ Connection cn = koneksi.koneksi.Koneksi();
         try
         {
             st = cn.createStatement();
-            st.executeUpdate("INSERT INTO supir (no_polisi,merek,nama_mobil,id_jenis_kendaraan,id_supir)" +  "values('" + fieldnopol.getText()+ "','"
+            st.executeUpdate("INSERT INTO kendaraan (no_polisi,merek,nama_mobil,id_jenis_kendaraan,id_supir)" +  "values('" + fieldnopol.getText()+ "','"
                     + fieldmerk.getText() + "','"
                     + fieldnama.getText() + "','"
                     + fieldjkendaraan.getText() + "','"
@@ -313,7 +313,7 @@ Connection cn = koneksi.koneksi.Koneksi();
     
             if ((jawab = JOptionPane.showConfirmDialog(null, "Ingin menghapus data?", "konfirmasi", JOptionPane.YES_NO_OPTION)) == 0) {
                 st = cn.createStatement();
-                st.executeUpdate("DELETE FROM kendaraan WHERE id_kendaraan='"
+                st.executeUpdate("DELETE FROM kendaraan WHERE id_kendraan='"
                                 + tabModel.getValueAt(tabelkendaraan.getSelectedRow(), 0) + "'");
                 tampilData("");
             fieldnama.setText("");
