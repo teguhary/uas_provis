@@ -89,12 +89,13 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnsupir" min="-2" pref="133" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="btnpelanggan" min="-2" pref="133" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                  <Component id="btnjeniskendaraan" min="-2" pref="150" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="btnpelanggan" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+                              <Component id="btnsupir" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnkendaraan" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="btnjeniskendaraan" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -113,7 +114,10 @@
                       <Component id="btnjeniskendaraan" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                  <Component id="btnsupir" min="-2" pref="36" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnsupir" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="btnkendaraan" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace pref="167" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -150,6 +154,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnjeniskendaraanActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnkendaraan">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Data Kendaraan"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnkendaraanActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

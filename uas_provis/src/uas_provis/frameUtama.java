@@ -6,6 +6,7 @@
 package uas_provis;
 
 import form.formJeniskendaraan;
+import form.formKendaraan;
 import form.formPelanggan;
 import form.formSupir;
 import java.awt.Dimension;
@@ -39,6 +40,7 @@ public class frameUtama extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnpelanggan = new javax.swing.JButton();
         btnjeniskendaraan = new javax.swing.JButton();
+        btnkendaraan = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mfile = new javax.swing.JMenu();
         medit = new javax.swing.JMenu();
@@ -74,6 +76,13 @@ public class frameUtama extends javax.swing.JFrame {
             }
         });
 
+        btnkendaraan.setText("Data Kendaraan");
+        btnkendaraan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnkendaraanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelutamaLayout = new javax.swing.GroupLayout(panelutama);
         panelutama.setLayout(panelutamaLayout);
         panelutamaLayout.setHorizontalGroup(
@@ -86,11 +95,12 @@ public class frameUtama extends javax.swing.JFrame {
                     .addGroup(panelutamaLayout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addGroup(panelutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnsupir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelutamaLayout.createSequentialGroup()
-                                .addComponent(btnpelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(btnjeniskendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(btnpelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnsupir, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(panelutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnkendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnjeniskendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
         panelutamaLayout.setVerticalGroup(
@@ -103,13 +113,16 @@ public class frameUtama extends javax.swing.JFrame {
                     .addComponent(btnpelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnjeniskendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57)
-                .addComponent(btnsupir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelutamaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnsupir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnkendaraan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
         panelutama.setLayer(btnsupir, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelutama.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelutama.setLayer(btnpelanggan, javax.swing.JLayeredPane.DEFAULT_LAYER);
         panelutama.setLayer(btnjeniskendaraan, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panelutama.setLayer(btnkendaraan, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         mfile.setText("File");
         jMenuBar1.add(mfile);
@@ -204,6 +217,20 @@ public class frameUtama extends javax.swing.JFrame {
        jk.setVisible(true);
     }//GEN-LAST:event_btnjeniskendaraanActionPerformed
 
+    private void btnkendaraanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnkendaraanActionPerformed
+        // TODO add your handling code here:
+        panelutama.removeAll();
+        panelutama.repaint();
+        formKendaraan kdr = new formKendaraan();
+       
+        Dimension lutama = this.getSize();
+        Dimension lkdr = kdr.getSize();
+       
+        kdr.setLocation(lutama.width/2-lkdr.width/2,lutama.height/2-lkdr.height/2);
+        panelutama.add(kdr);
+        kdr.setVisible(true);
+    }//GEN-LAST:event_btnkendaraanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -241,6 +268,7 @@ public class frameUtama extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnjeniskendaraan;
+    private javax.swing.JButton btnkendaraan;
     private javax.swing.JButton btnpelanggan;
     private javax.swing.JButton btnsupir;
     private javax.swing.JLabel jLabel1;
