@@ -146,7 +146,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Merk"/>
+        <Property name="text" type="java.lang.String" value="Merek"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btntambah">
@@ -194,7 +194,7 @@
               <Table columnCount="6" rowCount="4">
                 <Column editable="true" title="Id" type="java.lang.Object"/>
                 <Column editable="true" title="Nama" type="java.lang.Object"/>
-                <Column editable="true" title="Merk" type="java.lang.Object"/>
+                <Column editable="true" title="Merek" type="java.lang.Object"/>
                 <Column editable="true" title="No Polisi" type="java.lang.Object"/>
                 <Column editable="true" title="Id Jenis Kendaraan" type="java.lang.Object"/>
                 <Column editable="true" title="Id Supir" type="java.lang.Object"/>

@@ -92,7 +92,7 @@ Connection cn = koneksi.koneksi.Koneksi();
 
         jLabel2.setText("Nama");
 
-        jLabel4.setText("Merk");
+        jLabel4.setText("Merek");
 
         btntambah.setText("Tambah");
         btntambah.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +130,7 @@ Connection cn = koneksi.koneksi.Koneksi();
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nama", "Merk", "No Polisi", "Id Jenis Kendaraan", "Id Supir"
+                "Id", "Nama", "Merek", "No Polisi", "Id Jenis Kendaraan", "Id Supir"
             }
         ));
         tabelkendaraan.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -82,6 +82,10 @@ Connection cn = koneksi.koneksi.Koneksi();
         jLabel3 = new javax.swing.JLabel();
         jcb = new javax.swing.JComboBox();
         jTanggal1 = new com.toedter.calendar.JDateChooser();
+        jLabel5 = new javax.swing.JLabel();
+        jcbJenis = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
+        jcbMobil = new javax.swing.JComboBox();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Form Detail Sewa");
@@ -122,7 +126,7 @@ Connection cn = koneksi.koneksi.Koneksi();
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Tanggal_sewa", "Tanggal_kembali", "Durasi", "Subtotal"
+                "Id", "Tanggal sewa", "Durasi", "Merek", "Subtotal"
             }
         ));
         tabelpelanggan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -137,6 +141,22 @@ Connection cn = koneksi.koneksi.Koneksi();
         jLabel3.setText("Durasi (Hari)");
 
         jcb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1 Hari", "2 Hari", "3 Hari", "4 Hari", "5 Hari" }));
+
+        jLabel5.setText("Jenis ");
+
+        jcbJenis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbJenisActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Nama Mobil");
+
+        jcbMobil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMobilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,16 +174,20 @@ Connection cn = koneksi.koneksi.Koneksi();
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(79, 79, 79)
                                         .addComponent(jLabel4)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel2)))
-                                .addGap(54, 54, 54)
+                                        .addGap(72, 72, 72))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addGap(54, 54, 54)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTanggal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(23, 23, 23))))
+                                    .addComponent(jTanggal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jcbJenis, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jcbMobil, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -175,9 +199,9 @@ Connection cn = koneksi.koneksi.Koneksi();
                                         .addComponent(btntambah)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnubah, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(37, 37, 37)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,11 +218,17 @@ Connection cn = koneksi.koneksi.Koneksi();
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel3)
                                     .addComponent(jcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jcbJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jcbMobil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                                 .addComponent(jLabel4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTanggal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jTanggal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btntambah)
@@ -206,11 +236,9 @@ Connection cn = koneksi.koneksi.Koneksi();
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnreset)
-                            .addComponent(btnhapus))
-                        .addGap(107, 107, 107))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47))))
+                            .addComponent(btnhapus)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(107, 107, 107))
         );
 
         pack();
@@ -287,6 +315,34 @@ Connection cn = koneksi.koneksi.Koneksi();
         
     }//GEN-LAST:event_btnhapusActionPerformed
 
+    private void jcbJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbJenisActionPerformed
+        // TODO add your handling code here:
+        String sql = "select * from jenis_kendaraan";
+        try{
+            st = cn.createStatement();
+            rs = st.executeQuery(sql);
+            while(rs.next()){
+                jcbJenis.addItem(rs.getString("jenis"));
+            }
+        } catch (Exception e) {
+            
+        }
+    }//GEN-LAST:event_jcbJenisActionPerformed
+
+    private void jcbMobilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMobilActionPerformed
+        // TODO add your handling code here:
+        String sql = "select * from kendaraan";
+        try{
+            st = cn.createStatement();
+            rs = st.executeQuery(sql);
+            while(rs.next()){
+                jcbMobil.addItem(rs.getString("nama_mobil"));
+            }
+        } catch (Exception e) {
+            
+        }
+    }//GEN-LAST:event_jcbMobilActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnhapus;
@@ -297,9 +353,13 @@ Connection cn = koneksi.koneksi.Koneksi();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private com.toedter.calendar.JDateChooser jTanggal1;
     private javax.swing.JComboBox jcb;
+    private javax.swing.JComboBox jcbJenis;
+    private javax.swing.JComboBox jcbMobil;
     private javax.swing.JTable tabelpelanggan;
     // End of variables declaration//GEN-END:variables
 }
