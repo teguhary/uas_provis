@@ -235,8 +235,8 @@ Connection cn = koneksi.koneksi.Koneksi();
         try
         {
             st = cn.createStatement();
-            //st.executeUpdate("INSERT INTO pelanggan (nama,alamat)" +  "values('" + fieldnama.getText()+ "','"
-            //        + fieldalamat.getText() + "')");
+            //st.executeUpdate("INSERT INTO detai_sewa (tgl_sewa,durasi,subtotal,id_kendaraan, id_pelanggan)" +  
+            //"values('" + fieldnama.getText()+ "','"+ fieldalamat.getText() + "')");
             //tampilData("");
             //JOptionPane.showMessageDialog(null, "Simpan Berhasil");
             //fieldnama.setText("");
